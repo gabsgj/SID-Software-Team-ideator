@@ -3,7 +3,7 @@
 
 An autonomous drone-based system for structural inspection of bridges and civil infrastructure. SID uses computer vision and AI to detect cracks, corrosion, and spalling — replacing manual, hazardous inspection methods with fast, repeatable, data-driven assessments.
 
-> Built by the software team at IDEATOR GECT, Government Engineering College Thrissur, under the guidance of **Prof. Jikhil Joseph, M.Tech** (Asst. Professor, Civil Engineering Dept).
+> Built by the software team at IDEATOR GECT, Government Engineering College Thrissur.
 
 ---
 
@@ -68,8 +68,7 @@ Each module has its own README with setup and usage instructions. Start with the
 
 - 📄 [Team Execution Plan](./SID_Software_Plan_Month1.docx)
 - 🧠 [Crack Module](./crack/README.md)
-- 📦 Dataset ZIP (Google Drive) — `[ INSERT DRIVE LINK ]`
-- 🔬 Project Proposal — `[ INSERT LINK IF AVAILABLE ]`
+- 📦 [Dataset ZIP (Google Drive)](https://drive.google.com/file/d/1tmmljYEAbh6Ng9Bt0vUibe6p62VnvyAv/view?usp=sharing)
 
 ---
 
