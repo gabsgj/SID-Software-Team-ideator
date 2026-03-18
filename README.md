@@ -66,7 +66,7 @@ Each module has its own README with setup and usage instructions. Start with the
 
 ## Quick Links
 
-- 📄 [Team Execution Plan](./SID_Software_Plan_Month1.docx)
+- 📄 [Team Execution Plan](./SID_Plan_final.pdf)
 - 🧠 [Crack Module](./crack/README.md)
 - 📦 [Dataset ZIP (Google Drive)](https://drive.google.com/file/d/1tmmljYEAbh6Ng9Bt0vUibe6p62VnvyAv/view?usp=sharing)
 
