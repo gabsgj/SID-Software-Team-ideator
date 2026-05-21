@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/crack-severity-output-v2.0.schema.json",
+  "title": "Crack Severity Classifier Output v2.0",
+  "description": "Schema for batch output and frame-level severity classifications.",
+  "type": "object",
+  "required": ["batch_summary", "frames"],
+  "properties": {
+    "batch_summary": {
+      "type": "object",
+      "required": [
+        "total_frames",
+        "total_detections",
+        "severity_counts",
+        "exported_at_utc",
+        "thresholds"
+      ],
+      "properties": {
+        "total_frames": { "type": "integer", "minimum": 0 },
+        "total_detections": { "type": "integer", "minimum": 0 },
+        "severity_counts": {
+          "type": "object",
+          "required": ["Minor", "Moderate", "Severe"],
+          "properties": {
+            "Minor": { "type": "integer", "minimum": 0 },
+            "Moderate": { "type": "integer", "minimum": 0 },
+            "Severe": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "exported_at_utc": { "type": "string", "format": "date-time" },
+        "thresholds": {
+          "type": "object",
+          "required": ["minor_max", "moderate_max"],
+          "properties": {
+            "minor_max": { "type": "number", "minimum": 0, "maximum": 1 },
+            "moderate_max": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      }
+    },
+    "frames": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/frame_record" }
+    }
+  },
+  "definitions": {
+    "frame_record": {
+      "type": "object",
+      "required": [
+        "session_id",
+        "timestamp",
+        "source",
+        "frame_id",
+        "image_width_px",
+        "image_height_px",
+        "location",
+        "model",
+        "detections",
+        "summary"
+      ],
+      "properties": {
+        "session_id": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "source": { "type": "string" },
+        "frame_id": { "type": "integer", "minimum": 0 },
+        "image_width_px": { "type": "integer", "exclusiveMinimum": 0 },
+        "image_height_px": { "type": "integer", "exclusiveMinimum": 0 },
+        "location": {
+          "type": "object",
+          "required": ["label"],
+          "properties": {
+            "label": { "type": "string" },
+            "latitude": { "type": ["number", "null"] },
+            "longitude": { "type": ["number", "null"] }
+          }
+        },
+        "model": {
+          "type": "object",
+          "required": ["name", "weights"],
+          "properties": {
+            "name": { "type": "string" },
+            "weights": { "type": "string" }
+          }
+        },
+        "detections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "detection_id",
+              "bbox_px",
+              "confidence",
+              "geometry_px",
+              "geometry_mm",
+              "severity"
+            ],
+            "properties": {
+              "detection_id": { "type": "string" },
+              "bbox_px": {
+                "type": "array",
+                "items": { "type": "number" },
+                "minItems": 4,
+                "maxItems": 4,
+                "description": "[x1, y1, x2, y2]"
+              },
+              "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+              "geometry_px": {
+                "type": "object",
+                "required": ["length_px", "width_px", "relative_width"],
+                "properties": {
+                  "length_px": { "type": "number", "minimum": 0 },
+                  "width_px": { "type": "number", "minimum": 0 },
+                  "relative_width": { "type": "number", "minimum": 0, "maximum": 1 }
+                }
+              },
+              "geometry_mm": {
+                "type": "object",
+                "required": ["width_mm", "stereo_available"],
+                "properties": {
+                  "width_mm": { "type": ["number", "null"] },
+                  "stereo_available": { "type": "boolean" }
+                }
+              },
+              "severity": {
+                "type": "object",
+                "required": ["level", "basis"],
+                "properties": {
+                  "level": {
+                    "type": "string",
+                    "enum": ["Minor", "Moderate", "Severe"]
+                  },
+                  "basis": {
+                    "type": "string",
+                    "enum": ["relative_width"]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": {
+          "type": "object",
+          "required": ["total_detections", "highest_severity", "flagged"],
+          "properties": {
+            "total_detections": { "type": "integer", "minimum": 0 },
+            "highest_severity": {
+              "type": ["string", "null"],
+              "enum": ["Minor", "Moderate", "Severe", null]
+            },
+            "flagged": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}
