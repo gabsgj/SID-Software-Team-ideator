@@ -1,0 +1,29 @@
+# SID — Structural Inspection Drone
+# Crack Detection, Width Estimation & BIM Mapping
+
+# Core ML
+ultralytics>=8.0.0
+torch>=2.0.0
+
+# Computer Vision & Image Processing
+opencv-python>=4.8
+scikit-image>=0.21
+scipy>=1.11
+Pillow>=10.0
+
+# Data Validation
+pydantic>=2.0
+numpy>=1.24
+
+# BIM / IFC
+ifcopenshell>=0.7
+
+# Visualization
+matplotlib>=3.7
+plotly>=5.15
+
+# API
+flask>=3.0
+
+# Testing
+pytest>=7.4

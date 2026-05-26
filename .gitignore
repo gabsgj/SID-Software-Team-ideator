@@ -1,0 +1,50 @@
+# ────────────────────────────────────────────────────────────
+# SID — Structural Inspection Drone
+# .gitignore
+# ────────────────────────────────────────────────────────────
+
+# ── Python ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+
+# ── Virtual Environment ────────────────────────────────────
+venv/
+.venv/
+env/
+.env/
+
+# ── Testing ─────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ── IDE / Editor ────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── macOS ───────────────────────────────────────────────────
+.DS_Store
+._*
+
+# ── Generated Output ───────────────────────────────────────
+inspection_output/
+
+# ── Model Weights (base/pretrained — not needed in repo) ───
+yolo11n-seg.pt
+yolo11s-seg.pt
+last.pt
+
+# ── Large Training Artifacts (optional: uncomment to exclude)
+# YOLO_Crack_Training/results/
+# *.csv
